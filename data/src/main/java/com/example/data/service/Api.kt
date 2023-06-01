@@ -23,11 +23,11 @@ interface Api {
     @POST("users/check-auth-code/")
     suspend fun checkAuth(@Body phoneBody: PhoneBody): AuthBody
 
-    @GET("users/check-jwt/")
-    suspend fun getToken(): String
-
     @POST("users/refresh-token/")
     suspend fun getRefreshToken(@Body refreshTokenBody: RefreshTokenBody): TokensBody
+
+    @GET("users/check-jwt/")
+    suspend fun getToken(): String
 
     @GET("users/me/")
     fun getUser(): Flow<UserBody>
