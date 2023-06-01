@@ -31,6 +31,12 @@ android {
 }
 
 dependencies {
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
     // Modules
     implementation project(path: ':domain')
 
