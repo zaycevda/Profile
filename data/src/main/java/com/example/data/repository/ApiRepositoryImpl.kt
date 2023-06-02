@@ -1,6 +1,7 @@
 package com.example.data.repository
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.os.CountDownTimer
 import com.example.data.service.Api
 import com.example.data.utils.MyCountDownTimer
@@ -36,7 +37,7 @@ class ApiRepositoryImpl(private val api: Api, context: Context) : ApiRepository 
     private lateinit var refreshToken: String
     private var countDownTimer: CountDownTimer? = null
 
-    private val sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE)
+    private val sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES, MODE_PRIVATE)
     private val editor = sharedPreferences.edit()
 
     override suspend fun auth(phoneShort: PhoneShort): Success {
@@ -117,9 +118,9 @@ class ApiRepositoryImpl(private val api: Api, context: Context) : ApiRepository 
     }
 
     companion object {
-        private const val SHARED_PREFERENCES = "SHARED_PREFERENCES"
+        private const val REFRESH_TOKEN = "REFRESH_TOKEN"
         const val ACCESS_TOKEN = "ACCESS_TOKEN"
-        const val REFRESH_TOKEN = "REFRESH_TOKEN"
         const val BLANK = ""
+        const val SHARED_PREFERENCES = "SHARED_PREFERENCES"
     }
 }

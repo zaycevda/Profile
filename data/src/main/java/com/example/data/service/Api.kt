@@ -13,28 +13,42 @@ import com.example.data.models.UserShortBody
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
 interface Api {
-    @POST("users/send-auth-code/")
+    @POST(API_AUTH)
     suspend fun auth(@Body phoneShortBody: PhoneShortBody): SuccessBody
 
-    @POST("users/check-auth-code/")
+    @POST(API_CHECK_AUTH)
     suspend fun checkAuth(@Body phoneBody: PhoneBody): AuthBody
 
-    @POST("users/refresh-token/")
+    @POST(API_GET_REFRESH_TOKEN)
     suspend fun getRefreshToken(@Body refreshTokenBody: RefreshTokenBody): TokensBody
 
-    @GET("users/check-jwt/")
+    @GET(API_GET_TOKEN)
     suspend fun getToken(): String
 
-    @GET("users/me/")
+    @Headers("$CACHE_CONTROL$CACHE_LIFESPAN")
+    @GET(API_GET_USER)
     fun getUser(): Flow<UserBody>
 
-    @POST("users/register/")
+    @POST(API_REGISTER)
     suspend fun register(@Body userMiniBody: UserMiniBody): TokensBody
 
-    @PUT("users/me/")
+    @PUT(API_UPDATE_USER)
     suspend fun updateUser(@Body userShortBody: UserShortBody): AvatarsObjectBody
+
+    private companion object {
+        private const val API_AUTH = "/api/v1/users/send-auth-code/"
+        private const val API_CHECK_AUTH = "/api/v1/users/check-auth-code/"
+        private const val API_GET_REFRESH_TOKEN = "/api/v1/users/refresh-token/"
+        private const val API_GET_TOKEN = "/api/v1/users/check-jwt/"
+        private const val API_GET_USER = "/api/v1/users/me/"
+        private const val API_REGISTER = "/api/v1/users/register/"
+        private const val API_UPDATE_USER = "/api/v1/users/me/"
+        private const val CACHE_CONTROL = "Cache-Control: max-age="
+        private const val CACHE_LIFESPAN = "600" // 10 minutes
+    }
 }

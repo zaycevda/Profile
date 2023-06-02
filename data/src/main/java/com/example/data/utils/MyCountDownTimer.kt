@@ -4,7 +4,7 @@ import android.os.CountDownTimer
 
 class MyCountDownTimer(
     private val onFinish: () -> Unit
-) : CountDownTimer(TEN_MINUTES, ONE_SECOND) {
+) : CountDownTimer(TOKEN_LIFESPAN, COUNT_DOWN_INTERVAL) {
     override fun onTick(millisUntilFinished: Long) {}
 
     override fun onFinish() {
@@ -12,7 +12,7 @@ class MyCountDownTimer(
     }
 
     private companion object {
-        private const val TEN_MINUTES: Long = 1000 * 60 * 10
-        private const val ONE_SECOND: Long = 1000
+        private const val TOKEN_LIFESPAN: Long = 1000 * 60 * 10 // 10 minutes
+        private const val COUNT_DOWN_INTERVAL: Long = 1000 // 1 second
     }
 }
