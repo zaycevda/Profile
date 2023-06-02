@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/authorizationFragment">
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.example.testformangofzco.presentation.AuthorizationFragment"
+        android:label="AuthorizationFragment"
+        tools:layout="@layout/fragment_authorization">
+        <action
+            android:id="@+id/action_authorizationFragment_to_phoneCodesBottomSheet"
+            app:destination="@id/phoneCodesBottomSheet" />
+    </fragment>
+    <dialog
+        android:id="@+id/phoneCodesBottomSheet"
+        android:name="com.example.testformangofzco.presentation.PhoneCodesBottomSheet"
+        android:label="bottom_sheet_phone_codes"
+        tools:layout="@layout/bottom_sheet_phone_codes" />
+</navigation>
