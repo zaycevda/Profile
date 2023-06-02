@@ -12,12 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:visibility="gone" />
+        android:visibility="gone" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/cl_authorization"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_authorization"
@@ -36,13 +37,13 @@
             app:layout_constraintTop_toBottomOf="@id/tb_authorization">
 
             <TextView
-                android:id="@+id/tv_phone_country_code"
+                android:id="@+id/tv_country_code"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:background="@drawable/shape_country_code"
                 android:gravity="center"
-                android:hint="@string/default_country_code"
                 android:paddingHorizontal="12dp"
+                android:text="@string/default_country_code"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -51,7 +52,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_toEndOf="@id/tv_phone_country_code"
+                android:layout_toEndOf="@id/tv_country_code"
                 app:hintAnimationEnabled="false"
                 app:hintEnabled="false"
                 app:startIconTint="@color/black">
@@ -69,34 +70,36 @@
             </com.google.android.material.textfield.TextInputLayout>
         </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_code"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_get_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/log_in" />
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="48dp"
+            android:layout_marginTop="30dp"
+            android:digits="1234567890"
+            android:gravity="center"
+            android:inputType="number"
+            android:letterSpacing="0.5"
+            android:maxLength="6"
+            android:textSize="24sp"
+            android:visibility="gone"
+            tools:text="123456" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_log_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="48dp"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/tb_authorization"
-            tools:visibility="gone">
-
-            <EditText
-                android:id="@+id/et_code"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:digits="1234567890"
-                android:gravity="center"
-                android:inputType="number"
-                android:letterSpacing="0.5"
-                android:maxLength="6"
-                android:textSize="24sp"
-                tools:text="123456" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_log_in"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/log_in" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="12dp"
+            android:text="@string/log_in"
+            android:visibility="gone" />
+    </LinearLayout>
 </FrameLayout>

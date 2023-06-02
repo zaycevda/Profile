@@ -33,7 +33,7 @@ class PhoneCodesBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet_ph
         adapter = CountryCodesAdapter { code ->
             setFragmentResult(
                 REQUEST_ACTION_KEY,
-                bundleOf(PHONE_CODE_KEY to code)
+                bundleOf(COUNTRY_CODE_KEY to code)
             )
             findNavController().navigateUp()
         }
@@ -48,6 +48,6 @@ class PhoneCodesBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet_ph
 
     companion object {
         const val REQUEST_ACTION_KEY = "REQUEST_ACTION_KEY"
-        const val PHONE_CODE_KEY = "PHONE_CODE_KEY"
+        const val COUNTRY_CODE_KEY = "PHONE_CODE_KEY"
     }
 }

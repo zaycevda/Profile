@@ -3,17 +3,17 @@ package com.example.domain.models
 data class User(
     val name: String,
     val username: String,
-    val birthday: String,
-    val city: String,
-    val vk: String,
-    val instagram: String,
-    val status: String,
-    val avatar: String,
+    val birthday: String? = null,
+    val city: String? = null,
+    val vk: String? = null,
+    val instagram: String? = null,
+    val status: String? = null,
+    val avatar: String? = null,
     val id: Long,
-    val last: String,
+    val last: String? = null,
     val online: Boolean,
-    val created: String,
+    val created: String? = null,
     val phone: String,
-    val completedTask: Long,
-    val avatars: Avatars
+    val completedTask: Long = 0,
+    val avatars: Avatars? = null
 )

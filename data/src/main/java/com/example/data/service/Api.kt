@@ -2,8 +2,8 @@ package com.example.data.service
 
 import com.example.data.models.AuthBody
 import com.example.data.models.AvatarsObjectBody
+import com.example.data.models.CheckAuthBody
 import com.example.data.models.PhoneBody
-import com.example.data.models.PhoneShortBody
 import com.example.data.models.RefreshTokenBody
 import com.example.data.models.SuccessBody
 import com.example.data.models.TokensBody
@@ -19,10 +19,10 @@ import retrofit2.http.PUT
 
 interface Api {
     @POST(API_AUTH)
-    suspend fun auth(@Body phoneShortBody: PhoneShortBody): SuccessBody
+    suspend fun auth(@Body phoneBody: PhoneBody): SuccessBody
 
     @POST(API_CHECK_AUTH)
-    suspend fun checkAuth(@Body phoneBody: PhoneBody): AuthBody
+    suspend fun checkAuth(@Body checkAuthBody: CheckAuthBody): AuthBody
 
     @POST(API_GET_REFRESH_TOKEN)
     suspend fun getRefreshToken(@Body refreshTokenBody: RefreshTokenBody): TokensBody

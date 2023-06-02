@@ -8,17 +8,17 @@ data class UserShortBody(
     @SerializedName("username")
     val username: String,
     @SerializedName("birthday")
-    val birthday: String,
+    val birthday: String? = null,
     @SerializedName("city")
-    val city: String,
+    val city: String? = null,
     @SerializedName("vk")
-    val vk: String,
+    val vk: String? = null,
     @SerializedName("instagram")
-    val instagram: String,
+    val instagram: String? = null,
     @SerializedName("status")
-    val status: String,
+    val status: String? = null,
     @SerializedName("avatar")
-    val avatarBody: AvatarBody
+    val avatarBody: AvatarBody? = null
 )
 
 data class AvatarBody(

@@ -13,29 +13,29 @@ data class ProfileDataBody(
     @SerializedName("username")
     val username: String,
     @SerializedName("birthday")
-    val birthday: String,
+    val birthday: String? = null,
     @SerializedName("city")
-    val city: String,
+    val city: String? = null,
     @SerializedName("vk")
-    val vk: String,
+    val vk: String? = null,
     @SerializedName("instagram")
-    val instagram: String,
+    val instagram: String? = null,
     @SerializedName("status")
-    val status: String,
+    val status: String? = null,
     @SerializedName("avatar")
-    val avatar: String,
+    val avatar: String? = null,
     @SerializedName("id")
     val id: Long,
     @SerializedName("last")
-    val last: String,
+    val last: String? = null,
     @SerializedName("online")
     val online: Boolean,
     @SerializedName("created")
-    val created: String,
+    val created: String? = null,
     @SerializedName("phone")
     val phone: String,
     @SerializedName("completed_task")
-    val completedTask: Long,
+    val completedTask: Long = 0,
     @SerializedName("avatars")
-    val avatarsBody: AvatarsBody
+    val avatarsBody: AvatarsBody? = null
 )

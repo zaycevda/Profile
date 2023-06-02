@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AvatarsBody(
     @SerializedName("avatar")
-    val avatar: String,
+    val avatar: String? = null,
     @SerializedName("big_avatar")
     val bigAvatar: String,
     @SerializedName("mini_avatar")

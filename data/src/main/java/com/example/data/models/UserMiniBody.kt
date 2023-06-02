@@ -6,7 +6,7 @@ data class UserMiniBody(
     @SerializedName("phone")
     val phone: String,
     @SerializedName("name")
-    val name: String,
+    val name: String, // maxLength = 128
     @SerializedName("username")
-    val username: String
+    val username: String // minLength = 5, maxLength = 32
 )
