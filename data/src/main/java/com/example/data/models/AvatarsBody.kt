@@ -13,5 +13,5 @@ data class AvatarsBody(
 
 data class AvatarsObjectBody(
     @SerializedName("avatars")
-    val avatarsBody: AvatarBody
+    val avatarsBody: AvatarsBody
 )

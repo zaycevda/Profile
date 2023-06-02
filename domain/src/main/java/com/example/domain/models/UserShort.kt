@@ -8,7 +8,7 @@ data class UserShort(
     val vk: String,
     val instagram: String,
     val status: String,
-    val avatarBody: Avatar
+    val avatar: Avatar
 )
 
 data class Avatar(

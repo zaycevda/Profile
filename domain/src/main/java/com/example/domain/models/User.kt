@@ -15,5 +15,5 @@ data class User(
     val created: String,
     val phone: String,
     val completedTask: Long,
-    val avatarsBody: Avatars
+    val avatars: Avatars
 )
