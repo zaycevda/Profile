@@ -1,7 +1,6 @@
 package com.example.testformangofzco.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
@@ -21,11 +20,14 @@ import com.example.testformangofzco.presentation.PhoneCodesBottomSheet.Companion
 import com.example.testformangofzco.presentation.RegistrationFragment.Companion.PHONE_KEY
 import com.example.testformangofzco.utils.AuthSharedPrefs
 import com.example.testformangofzco.utils.MaskTextWatcher
+import com.example.testformangofzco.utils.safelyNavigate
 import com.example.testformangofzco.utils.setCountryCode
 import com.example.testformangofzco.utils.showToast
 import com.example.testformangofzco.viewmodels.AuthorizationViewModel
 import com.example.testformangofzco.viewmodels.AuthorizationViewModelFactory
 import javax.inject.Inject
+
+// code: 133337
 
 class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
 
@@ -40,10 +42,12 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
 
     private val sharedPreferences by lazy { AuthSharedPrefs(requireActivity()) }
 
-    private var countryCode = "+7"
+    private var countryCode = DEFAULT_COUNTRY_CODE
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sharedPreferences.checkAuth(MainActivity())
 
         inject()
 
@@ -62,38 +66,38 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
 
     private fun auth() {
         binding.btnGetCode.setOnClickListener {
-            val phoneNumber = binding.etPhoneNumber.text?.replace("-".toRegex(), "").toString()
-            val phone = Phone(phone = countryCode + phoneNumber)
+            if (binding.etPhoneNumber.text?.length != 13) showToast(getString(R.string.incorrect_phone))
+            else {
+                val phoneNumber = binding.etPhoneNumber.text?.replace("-".toRegex(), "").toString()
+                val phone = Phone(phone = countryCode + phoneNumber)
 
-            Log.d(TAG, "auth: phone = $phone")
-
-            viewModel.auth(phone = phone)
-            lifecycleScope.launchWhenCreated {
-                viewModel.success.collect { state ->
-                    state.on(
-                        error = {
-                            showToast("error: ${it.message}")
-                            Log.e(TAG, "auth: ${it.message}")
-                        },
-                        loading = {
-                            binding.clAuthorization.isGone = true
-                            binding.pbAuthorization.isGone = false
-                        },
-                        success = { success ->
-                            Log.d(TAG, "auth: isSuccess = $success")
-                            if (success.isSuccess) {
-                                binding.clAuthorization.isGone = false
-                                binding.pbAuthorization.isGone = true
-                                binding.etCode.isGone = false
-                                binding.rlPhone.isGone = true
-                                binding.btnGetCode.isGone = true
-                                binding.btnLogIn.isGone = false
-                            } else {
-                                binding.clAuthorization.isGone = false
-                                binding.pbAuthorization.isGone = true
+                viewModel.auth(phone = phone)
+                lifecycleScope.launchWhenCreated {
+                    viewModel.success.collect { state ->
+                        state.on(
+                            error = {
+                                showToast(message = getString(R.string.error, it.message))
+                                return@on
+                            },
+                            loading = {
+                                binding.clAuthorization.isGone = true
+                                binding.pbAuthorization.isGone = false
+                            },
+                            success = { success ->
+                                if (success.isSuccess) {
+                                    binding.clAuthorization.isGone = false
+                                    binding.pbAuthorization.isGone = true
+                                    binding.etCode.isGone = false
+                                    binding.rlPhone.isGone = true
+                                    binding.btnGetCode.isGone = true
+                                    binding.btnLogIn.isGone = false
+                                } else {
+                                    binding.clAuthorization.isGone = false
+                                    binding.pbAuthorization.isGone = true
+                                }
                             }
-                        }
-                    )
+                        )
+                    }
                 }
             }
         }
@@ -105,15 +109,12 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
             val phone = countryCode + phoneNumber
             val code = binding.etCode.text.toString()
             val checkAuth = CheckAuth(phoneNumber = phone, code = code)
-
-            Log.d(TAG, "checkAuth: phone = $checkAuth")
             viewModel.checkAuth(checkAuth = checkAuth)
             lifecycleScope.launchWhenCreated {
                 viewModel.auth.collect { state ->
                     state.on(
                         error = {
-                            showToast("error: ${it.message}")
-                            Log.e(TAG, "checkAuth: $it")
+                            showToast(message = getString(R.string.error, it.message))
                             binding.clAuthorization.isGone = false
                             binding.pbAuthorization.isGone = true
                         },
@@ -122,9 +123,8 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
                             binding.pbAuthorization.isGone = false
                         },
                         success = { auth ->
-                            Log.d(TAG, "checkAuth: auth = $auth")
                             if (auth.isUserExists) sharedPreferences.logIn(MainActivity())
-                            else findNavController().navigate(
+                            else findNavController().safelyNavigate(
                                 R.id.action_authorizationFragment_to_registrationFragment,
                                 bundleOf(PHONE_KEY to phone)
                             )
@@ -149,6 +149,6 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
     }
 
     private companion object {
-        private const val TAG = "AuthorizationFragment"
+        private const val DEFAULT_COUNTRY_CODE = "+7"
     }
 }

@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/account_creation_nav_graph"
     app:startDestination="@id/authorizationFragment">
     <fragment
         android:id="@+id/authorizationFragment"
@@ -14,16 +14,18 @@
             app:destination="@id/phoneCodesBottomSheet" />
         <action
             android:id="@+id/action_authorizationFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
+            app:destination="@id/registrationFragment"
+            app:popUpTo="@id/account_creation_nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <dialog
         android:id="@+id/phoneCodesBottomSheet"
         android:name="com.example.testformangofzco.presentation.PhoneCodesBottomSheet"
-        android:label="bottom_sheet_phone_codes"
+        android:label="PhoneCodesBottomSheet"
         tools:layout="@layout/bottom_sheet_phone_codes" />
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.example.testformangofzco.presentation.RegistrationFragment"
-        android:label="fragment_registration"
+        android:label="RegistrationFragment"
         tools:layout="@layout/fragment_registration" />
 </navigation>

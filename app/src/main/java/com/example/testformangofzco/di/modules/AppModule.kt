@@ -3,7 +3,9 @@ package com.example.testformangofzco.di.modules
 import android.content.Context
 import com.example.domain.usecases.AuthUseCase
 import com.example.domain.usecases.CheckAuthUseCase
+import com.example.domain.usecases.RegistrationUseCase
 import com.example.testformangofzco.viewmodels.AuthorizationViewModelFactory
+import com.example.testformangofzco.viewmodels.RegistrationViewModelFactory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -22,5 +24,13 @@ class AppModule(val context: Context) {
     ) = AuthorizationViewModelFactory(
         authUseCase = authUseCase,
         checkAuthUseCase = checkAuthUseCase
+    )
+
+    @Provides
+    @Singleton
+    fun provideRegistrationViewModelFactory(
+        registrationUseCase: RegistrationUseCase
+    ) = RegistrationViewModelFactory(
+        registrationUseCase = registrationUseCase
     )
 }

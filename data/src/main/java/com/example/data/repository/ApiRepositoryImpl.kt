@@ -44,6 +44,9 @@ class ApiRepositoryImpl(private val api: Api, context: Context) : ApiRepository 
     override suspend fun auth(phone: Phone): Success {
         val phoneShortBody = phone.toPhoneShortBody()
         val successBody = api.auth(phoneBody = phoneShortBody)
+
+        Log.d(TAG, "checkAuth: successBody = $successBody")
+
         return successBody.toSuccess()
     }
 
@@ -94,9 +97,9 @@ class ApiRepositoryImpl(private val api: Api, context: Context) : ApiRepository 
         return userBody.map { it.profileDataBody.toUser() }
     }
 
-    override suspend fun register(userMini: UserMini): Tokens {
+    override suspend fun registration(userMini: UserMini): Tokens {
         val userMiniBody = userMini.toUserMiniBody()
-        val tokensBody = api.register(userMiniBody = userMiniBody)
+        val tokensBody = api.registration(userMiniBody = userMiniBody)
 
         editor.putString(REFRESH_TOKEN, tokensBody.refreshToken)
         editor.putString(ACCESS_TOKEN, tokensBody.accessToken)

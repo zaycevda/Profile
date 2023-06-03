@@ -23,7 +23,7 @@ interface ApiRepository {
 
     fun getUser(): Flow<User>
 
-    suspend fun register(userMini: UserMini): Tokens
+    suspend fun registration(userMini: UserMini): Tokens
 
     suspend fun updateUser(userShort: UserShort): Avatars
 }

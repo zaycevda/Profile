@@ -37,11 +37,22 @@
             tools:text="+7 977-899-63-34" />
 
         <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:maxLength="128"
+            android:hint="@string/enter_your_name"
+            android:paddingHorizontal="12dp" />
+
+        <EditText
             android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
+            android:hint="@string/enter_your_username"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
             android:maxLength="32"
             android:paddingHorizontal="12dp" />

@@ -1,12 +1,22 @@
 <resources>
+    <!-- Static text -->
     <string name="app_name">TestForMangoFZCO</string>
     <string name="authorization">Authorization</string>
+    <string name="default_country_code">🇷🇺 +7</string>
+    <string name="enter_your_name">enter your name</string>
+    <string name="enter_your_username">enter your username</string>
+    <string name="log_in">Log in</string>
+    <string name="phone_example">999–999–99–99</string>
     <string name="registration">Registration</string>
+    <string name="search">Search…</string>
+    <string name="sign_up">Sign up</string>
+
+    <!-- Dynamic text -->
     <string name="country_code">%s (%s)</string>
     <string name="code">flag %s</string>
-    <string name="default_country_code">🇷🇺 +7</string>
-    <string name="phone_example">999–999–99–99</string>
-    <string name="search">Search…</string>
-    <string name="log_in">Log in</string>
-    <string name="sign_up">Sign up\n</string>
+
+    <!-- Toast messages -->
+    <string name="error">error: %s</string>
+    <string name="incorrect_phone">phone number is incorrect</string>
+    <string name="username_min_length">username min length is 5 symbols</string>
 </resources>

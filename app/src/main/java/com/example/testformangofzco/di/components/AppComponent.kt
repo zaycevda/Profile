@@ -4,6 +4,7 @@ import com.example.testformangofzco.di.modules.AppModule
 import com.example.testformangofzco.di.modules.DataModule
 import com.example.testformangofzco.di.modules.DomainModule
 import com.example.testformangofzco.presentation.AuthorizationFragment
+import com.example.testformangofzco.presentation.RegistrationFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,4 +18,5 @@ import javax.inject.Singleton
 )
 interface AppComponent {
     fun injectAuthorizationFragment(authorizationFragment: AuthorizationFragment)
+    fun injectRegistrationFragment(registrationFragment: RegistrationFragment)
 }

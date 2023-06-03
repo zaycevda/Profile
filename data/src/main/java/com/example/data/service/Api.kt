@@ -35,7 +35,7 @@ interface Api {
     fun getUser(): Flow<UserBody>
 
     @POST(API_REGISTER)
-    suspend fun register(@Body userMiniBody: UserMiniBody): TokensBody
+    suspend fun registration(@Body userMiniBody: UserMiniBody): TokensBody
 
     @PUT(API_UPDATE_USER)
     suspend fun updateUser(@Body userShortBody: UserShortBody): AvatarsObjectBody
