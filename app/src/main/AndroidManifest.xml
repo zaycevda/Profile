@@ -16,7 +16,7 @@
         android:theme="@style/Theme.TestForMangoFZCO"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.AccountCreationActivity"
+            android:name=".presentation.account_creation.AccountCreationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.user_profile.UserProfileActivity"
             android:exported="false" />
     </application>
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.testformangofzco.presentation
+package com.example.testformangofzco.presentation.account_creation
 
 import android.os.Bundle
 import android.view.View
@@ -8,8 +8,8 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.testformangofzco.R
 import com.example.testformangofzco.databinding.BottomSheetPhoneCodesBinding
-import com.example.testformangofzco.presentation.adapters.CountryCode
-import com.example.testformangofzco.presentation.adapters.CountryCodesAdapter
+import com.example.testformangofzco.presentation.account_creation.adapters.CountryCode
+import com.example.testformangofzco.presentation.account_creation.adapters.CountryCodesAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class PhoneCodesBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet_phone_codes) {

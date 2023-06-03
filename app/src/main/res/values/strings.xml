@@ -10,10 +10,17 @@
     <string name="registration">Registration</string>
     <string name="search">Search…</string>
     <string name="sign_up">Sign up</string>
+    <string name="user_profile">User Profile</string>
 
     <!-- Dynamic text -->
     <string name="country_code">%s (%s)</string>
     <string name="code">flag %s</string>
+    <string name="phone">phone: %s</string>
+    <string name="username">username: %s</string>
+    <string name="city">city: %s</string>
+    <string name="birthday">birthday: %s</string>
+    <string name="zodiac_sign">zodiac sign: %s</string>
+    <string name="about">about %s</string>
 
     <!-- Toast messages -->
     <string name="error">error: %s</string>

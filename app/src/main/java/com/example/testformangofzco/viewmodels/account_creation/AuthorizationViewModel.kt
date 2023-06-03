@@ -1,4 +1,4 @@
-package com.example.testformangofzco.viewmodels
+package com.example.testformangofzco.viewmodels.account_creation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -9,7 +9,7 @@ import com.example.domain.models.Phone
 import com.example.domain.models.Success
 import com.example.domain.usecases.AuthUseCase
 import com.example.domain.usecases.CheckAuthUseCase
-import com.example.testformangofzco.presentation.AuthorizationFragment
+import com.example.testformangofzco.viewmodels.ScreenState
 import com.example.testformangofzco.viewmodels.ScreenState.ErrorScreenState
 import com.example.testformangofzco.viewmodels.ScreenState.LoadingScreenState
 import com.example.testformangofzco.viewmodels.ScreenState.SuccessScreenState

@@ -3,8 +3,8 @@ package com.example.testformangofzco.di.components
 import com.example.testformangofzco.di.modules.AppModule
 import com.example.testformangofzco.di.modules.DataModule
 import com.example.testformangofzco.di.modules.DomainModule
-import com.example.testformangofzco.presentation.AuthorizationFragment
-import com.example.testformangofzco.presentation.RegistrationFragment
+import com.example.testformangofzco.presentation.account_creation.AuthorizationFragment
+import com.example.testformangofzco.presentation.account_creation.RegistrationFragment
 import dagger.Component
 import javax.inject.Singleton
 

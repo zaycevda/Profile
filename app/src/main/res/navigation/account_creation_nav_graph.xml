@@ -6,7 +6,7 @@
     app:startDestination="@id/authorizationFragment">
     <fragment
         android:id="@+id/authorizationFragment"
-        android:name="com.example.testformangofzco.presentation.AuthorizationFragment"
+        android:name="com.example.testformangofzco.presentation.account_creation.AuthorizationFragment"
         android:label="AuthorizationFragment"
         tools:layout="@layout/fragment_authorization">
         <action
@@ -20,12 +20,12 @@
     </fragment>
     <dialog
         android:id="@+id/phoneCodesBottomSheet"
-        android:name="com.example.testformangofzco.presentation.PhoneCodesBottomSheet"
+        android:name="com.example.testformangofzco.presentation.account_creation.PhoneCodesBottomSheet"
         android:label="PhoneCodesBottomSheet"
         tools:layout="@layout/bottom_sheet_phone_codes" />
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.testformangofzco.presentation.RegistrationFragment"
+        android:name="com.example.testformangofzco.presentation.account_creation.RegistrationFragment"
         android:label="RegistrationFragment"
         tools:layout="@layout/fragment_registration" />
 </navigation>

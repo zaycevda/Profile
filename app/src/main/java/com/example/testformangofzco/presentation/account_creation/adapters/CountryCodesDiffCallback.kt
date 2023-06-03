@@ -1,4 +1,4 @@
-package com.example.testformangofzco.presentation.adapters
+package com.example.testformangofzco.presentation.account_creation.adapters
 
 import androidx.recyclerview.widget.DiffUtil
 

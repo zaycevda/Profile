@@ -1,4 +1,4 @@
-package com.example.testformangofzco.viewmodels
+package com.example.testformangofzco.viewmodels.account_creation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

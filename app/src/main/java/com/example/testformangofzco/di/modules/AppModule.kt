@@ -4,8 +4,8 @@ import android.content.Context
 import com.example.domain.usecases.AuthUseCase
 import com.example.domain.usecases.CheckAuthUseCase
 import com.example.domain.usecases.RegistrationUseCase
-import com.example.testformangofzco.viewmodels.AuthorizationViewModelFactory
-import com.example.testformangofzco.viewmodels.RegistrationViewModelFactory
+import com.example.testformangofzco.viewmodels.account_creation.AuthorizationViewModelFactory
+import com.example.testformangofzco.viewmodels.account_creation.RegistrationViewModelFactory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

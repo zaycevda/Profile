@@ -1,4 +1,4 @@
-package com.example.testformangofzco.presentation
+package com.example.testformangofzco.presentation.account_creation
 
 import android.os.Bundle
 import android.view.View
@@ -15,16 +15,17 @@ import com.example.domain.models.Phone
 import com.example.testformangofzco.App
 import com.example.testformangofzco.R
 import com.example.testformangofzco.databinding.FragmentAuthorizationBinding
-import com.example.testformangofzco.presentation.PhoneCodesBottomSheet.Companion.COUNTRY_CODE_KEY
-import com.example.testformangofzco.presentation.PhoneCodesBottomSheet.Companion.REQUEST_ACTION_KEY
-import com.example.testformangofzco.presentation.RegistrationFragment.Companion.PHONE_KEY
+import com.example.testformangofzco.presentation.user_profile.UserProfileActivity
+import com.example.testformangofzco.presentation.account_creation.PhoneCodesBottomSheet.Companion.COUNTRY_CODE_KEY
+import com.example.testformangofzco.presentation.account_creation.PhoneCodesBottomSheet.Companion.REQUEST_ACTION_KEY
+import com.example.testformangofzco.presentation.account_creation.RegistrationFragment.Companion.PHONE_KEY
 import com.example.testformangofzco.utils.AuthSharedPrefs
 import com.example.testformangofzco.utils.MaskTextWatcher
 import com.example.testformangofzco.utils.safelyNavigate
 import com.example.testformangofzco.utils.setCountryCode
 import com.example.testformangofzco.utils.showToast
-import com.example.testformangofzco.viewmodels.AuthorizationViewModel
-import com.example.testformangofzco.viewmodels.AuthorizationViewModelFactory
+import com.example.testformangofzco.viewmodels.account_creation.AuthorizationViewModel
+import com.example.testformangofzco.viewmodels.account_creation.AuthorizationViewModelFactory
 import javax.inject.Inject
 
 // code: 133337
@@ -47,7 +48,7 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedPreferences.checkAuth(MainActivity())
+        sharedPreferences.checkAuth(UserProfileActivity())
 
         inject()
 
@@ -123,7 +124,7 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
                             binding.pbAuthorization.isGone = false
                         },
                         success = { auth ->
-                            if (auth.isUserExists) sharedPreferences.logIn(MainActivity())
+                            if (auth.isUserExists) sharedPreferences.logIn(UserProfileActivity())
                             else findNavController().safelyNavigate(
                                 R.id.action_authorizationFragment_to_registrationFragment,
                                 bundleOf(PHONE_KEY to phone)

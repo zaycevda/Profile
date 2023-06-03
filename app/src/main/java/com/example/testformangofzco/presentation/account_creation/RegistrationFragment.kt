@@ -1,4 +1,4 @@
-package com.example.testformangofzco.presentation
+package com.example.testformangofzco.presentation.account_creation
 
 import android.os.Bundle
 import android.view.View
@@ -11,10 +11,11 @@ import com.example.domain.models.UserMini
 import com.example.testformangofzco.App
 import com.example.testformangofzco.R
 import com.example.testformangofzco.databinding.FragmentRegistrationBinding
+import com.example.testformangofzco.presentation.user_profile.UserProfileActivity
 import com.example.testformangofzco.utils.AuthSharedPrefs
 import com.example.testformangofzco.utils.showToast
-import com.example.testformangofzco.viewmodels.RegistrationViewModel
-import com.example.testformangofzco.viewmodels.RegistrationViewModelFactory
+import com.example.testformangofzco.viewmodels.account_creation.RegistrationViewModel
+import com.example.testformangofzco.viewmodels.account_creation.RegistrationViewModelFactory
 import javax.inject.Inject
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
@@ -80,7 +81,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                                 binding.llRegistration.isGone = true
                             },
                             success = {
-                                sharedPreferences.logIn(MainActivity())
+                                sharedPreferences.logIn(UserProfileActivity())
                             }
                         )
                     }

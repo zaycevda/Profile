@@ -1,4 +1,4 @@
-package com.example.testformangofzco.viewmodels
+package com.example.testformangofzco.viewmodels.account_creation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.models.Tokens
 import com.example.domain.models.UserMini
 import com.example.domain.usecases.RegistrationUseCase
+import com.example.testformangofzco.viewmodels.ScreenState
 import com.example.testformangofzco.viewmodels.ScreenState.ErrorScreenState
 import com.example.testformangofzco.viewmodels.ScreenState.LoadingScreenState
 import com.example.testformangofzco.viewmodels.ScreenState.SuccessScreenState
