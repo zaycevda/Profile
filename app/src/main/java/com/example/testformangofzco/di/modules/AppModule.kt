@@ -3,9 +3,11 @@ package com.example.testformangofzco.di.modules
 import android.content.Context
 import com.example.domain.usecases.AuthUseCase
 import com.example.domain.usecases.CheckAuthUseCase
+import com.example.domain.usecases.GetUserUseCase
 import com.example.domain.usecases.RegistrationUseCase
 import com.example.testformangofzco.viewmodels.account_creation.AuthorizationViewModelFactory
 import com.example.testformangofzco.viewmodels.account_creation.RegistrationViewModelFactory
+import com.example.testformangofzco.viewmodels.user_profile.UserProfileViewModelFactory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -32,5 +34,13 @@ class AppModule(val context: Context) {
         registrationUseCase: RegistrationUseCase
     ) = RegistrationViewModelFactory(
         registrationUseCase = registrationUseCase
+    )
+
+    @Provides
+    @Singleton
+    fun provideUserProfileViewModelFactory(
+        getUserUseCase: GetUserUseCase
+    ) = UserProfileViewModelFactory(
+        getUserUseCase = getUserUseCase
     )
 }

@@ -3,7 +3,6 @@ package com.example.testformangofzco.di.modules
 import com.example.domain.repository.ApiRepository
 import com.example.domain.usecases.AuthUseCase
 import com.example.domain.usecases.CheckAuthUseCase
-import com.example.domain.usecases.GetRefreshTokenUseCase
 import com.example.domain.usecases.GetTokenUseCase
 import com.example.domain.usecases.GetUserUseCase
 import com.example.domain.usecases.RegistrationUseCase
@@ -24,11 +23,6 @@ class DomainModule {
     @Singleton
     fun provideCheckAuthUseCase(repository: ApiRepository) =
         CheckAuthUseCase(repository = repository)
-
-    @Provides
-    @Singleton
-    fun provideGetRefreshTokenUseCase(repository: ApiRepository) =
-        GetRefreshTokenUseCase(repository = repository)
 
     @Provides
     @Singleton

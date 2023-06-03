@@ -16,4 +16,15 @@ data class User(
     val phone: String,
     val completedTask: Long = 0,
     val avatars: Avatars? = null
-)
+) {
+    companion object {
+        fun emptyUser() =
+            User(
+                name = "",
+                username = "",
+                id = 0,
+                online = false,
+                phone = ""
+            )
+    }
+}

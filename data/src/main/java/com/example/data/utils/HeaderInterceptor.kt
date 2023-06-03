@@ -1,39 +1,41 @@
 package com.example.data.utils
 
-import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import com.example.data.repository.ApiRepositoryImpl.Companion.ACCESS_TOKEN
-import com.example.data.repository.ApiRepositoryImpl.Companion.BLANK
-import com.example.data.repository.ApiRepositoryImpl.Companion.SHARED_PREFERENCES
-import okhttp3.Call
 import okhttp3.Interceptor
 import okhttp3.Response
+import java.net.HttpURLConnection
 
-class HeaderInterceptor(context: Context) : Interceptor {
-
-    private var previousCall: Call? = null
-    private val sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES, MODE_PRIVATE)
+class HeaderInterceptor(
+    private val tokenSharedPrefs: TokenSharedPrefs,
+    private val tokenProvider: dagger.Lazy<TokenProvider>
+) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        previousCall?.cancel()
-
         val originalRequest = chain.request()
+        val accessToken = tokenSharedPrefs.accessToken
+
         val requestBuilder = originalRequest.newBuilder()
 
         if (shouldAddToken(originalRequest.url.toString()))
-            sharedPreferences.getString(ACCESS_TOKEN, BLANK)?.let { accessToken ->
-                val modifiedRequest = requestBuilder
-                    .addHeader(AUTHORIZATION, "$BEARER $accessToken")
-                    .build()
+            requestBuilder.addHeader(AUTHORIZATION, "$BEARER $accessToken")
 
-                previousCall = chain.call()
+        val modifiedRequest = requestBuilder.build()
 
-                return@let chain.proceed(modifiedRequest)
-            }
+        var response = chain.proceed(modifiedRequest)
 
-        previousCall = chain.call()
+        if (response.code == HttpURLConnection.HTTP_UNAUTHORIZED) {
+            tokenProvider.get().refreshToken()
 
-        return chain.proceed(originalRequest)
+            val newAccessToken = tokenSharedPrefs.accessToken
+            val retryRequestBuilder = originalRequest.newBuilder()
+                .addHeader(AUTHORIZATION, "$BEARER $newAccessToken")
+            val retryRequest = retryRequestBuilder.build()
+
+            response.close()
+
+            response = chain.proceed(retryRequest)
+        }
+
+        return response
     }
 
     private fun shouldAddToken(url: String) =

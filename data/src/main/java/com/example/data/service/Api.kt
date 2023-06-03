@@ -10,7 +10,7 @@ import com.example.data.models.TokensBody
 import com.example.data.models.UserBody
 import com.example.data.models.UserMiniBody
 import com.example.data.models.UserShortBody
-import kotlinx.coroutines.flow.Flow
+import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -25,14 +25,14 @@ interface Api {
     suspend fun checkAuth(@Body checkAuthBody: CheckAuthBody): AuthBody
 
     @POST(API_GET_REFRESH_TOKEN)
-    suspend fun getRefreshToken(@Body refreshTokenBody: RefreshTokenBody): TokensBody
+    fun getRefreshToken(@Body refreshTokenBody: RefreshTokenBody): Call<TokensBody>
 
     @GET(API_GET_TOKEN)
     suspend fun getToken(): String
 
     @Headers("$CACHE_CONTROL$CACHE_LIFESPAN")
     @GET(API_GET_USER)
-    fun getUser(): Flow<UserBody>
+    suspend fun getUser(): UserBody
 
     @POST(API_REGISTER)
     suspend fun registration(@Body userMiniBody: UserMiniBody): TokensBody
