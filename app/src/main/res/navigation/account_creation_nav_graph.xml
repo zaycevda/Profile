@@ -12,10 +12,18 @@
         <action
             android:id="@+id/action_authorizationFragment_to_phoneCodesBottomSheet"
             app:destination="@id/phoneCodesBottomSheet" />
+        <action
+            android:id="@+id/action_authorizationFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
     </fragment>
     <dialog
         android:id="@+id/phoneCodesBottomSheet"
         android:name="com.example.testformangofzco.presentation.PhoneCodesBottomSheet"
         android:label="bottom_sheet_phone_codes"
         tools:layout="@layout/bottom_sheet_phone_codes" />
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.testformangofzco.presentation.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" />
 </navigation>

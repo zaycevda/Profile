@@ -3,6 +3,7 @@ package com.example.testformangofzco.presentation
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
@@ -17,6 +18,7 @@ import com.example.testformangofzco.R
 import com.example.testformangofzco.databinding.FragmentAuthorizationBinding
 import com.example.testformangofzco.presentation.PhoneCodesBottomSheet.Companion.COUNTRY_CODE_KEY
 import com.example.testformangofzco.presentation.PhoneCodesBottomSheet.Companion.REQUEST_ACTION_KEY
+import com.example.testformangofzco.presentation.RegistrationFragment.Companion.PHONE_KEY
 import com.example.testformangofzco.utils.AuthSharedPrefs
 import com.example.testformangofzco.utils.MaskTextWatcher
 import com.example.testformangofzco.utils.setCountryCode
@@ -45,9 +47,7 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
 
         inject()
 
-        binding.btnGetCode.setOnClickListener {
-            auth()
-        }
+        auth()
 
         checkAuth()
 
@@ -61,38 +61,40 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
     }
 
     private fun auth() {
-        val phoneNumber = binding.etPhoneNumber.text?.replace("-".toRegex(), "").toString()
-        val phone = Phone(phone = countryCode + phoneNumber)
+        binding.btnGetCode.setOnClickListener {
+            val phoneNumber = binding.etPhoneNumber.text?.replace("-".toRegex(), "").toString()
+            val phone = Phone(phone = countryCode + phoneNumber)
 
-        Log.d(TAG, "auth: phone = $phone")
+            Log.d(TAG, "auth: phone = $phone")
 
-        viewModel.auth(phone = phone)
-        lifecycleScope.launchWhenCreated {
-            viewModel.success.collect { state ->
-                state.on(
-                    error = {
-                        showToast("error: ${it.message}")
-                        Log.e(TAG, "auth: ${it.message}")
-                    },
-                    loading = {
-                        binding.clAuthorization.isGone = true
-                        binding.pbAuthorization.isGone = false
-                    },
-                    success = { success ->
-                        Log.d(TAG, "auth: isSuccess = $success")
-                        if (success.isSuccess) {
-                            binding.clAuthorization.isGone = false
-                            binding.pbAuthorization.isGone = true
-                            binding.etCode.isGone = false
-                            binding.rlPhone.isGone = true
-                            binding.btnGetCode.isGone = true
-                            binding.btnLogIn.isGone = false
-                        } else {
-                            binding.clAuthorization.isGone = false
-                            binding.pbAuthorization.isGone = true
+            viewModel.auth(phone = phone)
+            lifecycleScope.launchWhenCreated {
+                viewModel.success.collect { state ->
+                    state.on(
+                        error = {
+                            showToast("error: ${it.message}")
+                            Log.e(TAG, "auth: ${it.message}")
+                        },
+                        loading = {
+                            binding.clAuthorization.isGone = true
+                            binding.pbAuthorization.isGone = false
+                        },
+                        success = { success ->
+                            Log.d(TAG, "auth: isSuccess = $success")
+                            if (success.isSuccess) {
+                                binding.clAuthorization.isGone = false
+                                binding.pbAuthorization.isGone = true
+                                binding.etCode.isGone = false
+                                binding.rlPhone.isGone = true
+                                binding.btnGetCode.isGone = true
+                                binding.btnLogIn.isGone = false
+                            } else {
+                                binding.clAuthorization.isGone = false
+                                binding.pbAuthorization.isGone = true
+                            }
                         }
-                    }
-                )
+                    )
+                }
             }
         }
     }
@@ -122,9 +124,10 @@ class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
                         success = { auth ->
                             Log.d(TAG, "checkAuth: auth = $auth")
                             if (auth.isUserExists) sharedPreferences.logIn(MainActivity())
-                            else {
-                                // TODO navigate to RegistrationFragment
-                            }
+                            else findNavController().navigate(
+                                R.id.action_authorizationFragment_to_registrationFragment,
+                                bundleOf(PHONE_KEY to phone)
+                            )
                         }
                     )
                 }
