@@ -65,6 +65,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
             app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
             app:startIconTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -74,7 +75,7 @@
                 android:background="@drawable/shape_text_input"
                 android:hint="@string/city"
                 android:imeOptions="actionDone"
-                android:inputType="phone"
+                android:inputType="text"
                 android:maxLines="1"
                 android:paddingHorizontal="8dp"
                 android:textColor="@color/black"
@@ -89,6 +90,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
             app:startIconTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -98,7 +100,7 @@
                 android:background="@drawable/shape_text_input"
                 android:hint="@string/status"
                 android:imeOptions="actionDone"
-                android:inputType="phone"
+                android:inputType="text"
                 android:maxLines="1"
                 android:paddingHorizontal="8dp"
                 android:textColor="@color/black"

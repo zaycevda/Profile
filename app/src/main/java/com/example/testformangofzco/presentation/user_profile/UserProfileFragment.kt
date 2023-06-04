@@ -1,7 +1,6 @@
 package com.example.testformangofzco.presentation.user_profile
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
@@ -72,7 +71,6 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                         this@UserProfileFragment.user = user
                         binding.apply {
                             user.avatars?.avatar?.let {
-                                Log.d(TAG, "initUser: $BASE_URL$it")
                                 Glide.with(requireContext())
                                     .load("$BASE_URL$it")
                                     .into(binding.ivAvatar)
@@ -97,12 +95,13 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
     }
 
     private fun navigation() {
+        val avatar = user.avatars?.avatar?.let { "$BASE_URL${user.avatars?.avatar}" }
         binding.ivEdit.setOnClickListener {
             findNavController().safelyNavigate(
                 R.id.action_userProfileFragment_to_editUserProfileFragment,
                 bundleOf(
                     USERNAME_KEY to user.username,
-                    AVATAR_KEY to "$BASE_URL${user.avatars?.avatar}",
+                    AVATAR_KEY to avatar,
                     CITY_KEY to user.city,
                     BIRTHDAY_KEY to user.birthday,
                     STATUS_KEY to user.status
@@ -113,7 +112,6 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
 
     private companion object {
         private const val BASE_URL = "https://plannerok.ru/"
-        private const val TAG = "UserProfileFragment"
         private const val FIFTH = 5
         private const val SIXTH = 6
         private const val EIGHTH = 8

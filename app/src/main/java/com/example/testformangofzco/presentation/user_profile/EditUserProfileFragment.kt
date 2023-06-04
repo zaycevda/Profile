@@ -37,7 +37,10 @@ class EditUserProfileFragment : Fragment(R.layout.fragment_edit_user_profile) {
     lateinit var editUserProfileViewModelFactory: EditUserProfileViewModelFactory
 
     private val viewModel by lazy {
-        ViewModelProvider(this, editUserProfileViewModelFactory)[EditUserProfileViewModel::class.java]
+        ViewModelProvider(
+            this,
+            editUserProfileViewModelFactory
+        )[EditUserProfileViewModel::class.java]
     }
 
     private val binding by viewBinding(FragmentEditUserProfileBinding::bind)
@@ -81,7 +84,7 @@ class EditUserProfileFragment : Fragment(R.layout.fragment_edit_user_profile) {
                     .into(binding.ivAvatar)
             }
             etCity.setText(city)
-            btnBirthday.text = birthday
+            btnBirthday.text = birthday ?: getString(R.string.birthday)
             etStatus.setText(status)
         }
     }
@@ -96,10 +99,15 @@ class EditUserProfileFragment : Fragment(R.layout.fragment_edit_user_profile) {
                     )
                 else null
 
+            val birthday: String? =
+                if (binding.btnBirthday.text == "Birthday")
+                    null
+                else binding.btnBirthday.text.toString()
+
             val userShort = UserShort(
                 username = username!!,
                 name = BLANK,
-                birthday = binding.btnBirthday.text.toString(),
+                birthday = birthday,
                 city = binding.etCity.text.toString(),
                 status = binding.etStatus.text.toString(),
                 avatar = avatar
