@@ -89,6 +89,6 @@ class DataModule {
 
     private companion object {
         private const val CACHE_SIZE: Long = 10 * 1024 * 1024 // 10 MB
-        private const val BASE_URL = "https://plannerok.ru"
+        private const val BASE_URL = "https://plannerok.ru/"
     }
 }

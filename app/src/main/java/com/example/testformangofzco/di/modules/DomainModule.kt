@@ -6,7 +6,7 @@ import com.example.domain.usecases.CheckAuthUseCase
 import com.example.domain.usecases.GetTokenUseCase
 import com.example.domain.usecases.GetUserUseCase
 import com.example.domain.usecases.RegistrationUseCase
-import com.example.domain.usecases.UpdateUserUseCase
+import com.example.domain.usecases.EditUserUseCase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -42,5 +42,5 @@ class DomainModule {
     @Provides
     @Singleton
     fun provideUpdateUserUseCase(repository: ApiRepository) =
-        UpdateUserUseCase(repository = repository)
+        EditUserUseCase(repository = repository)
 }

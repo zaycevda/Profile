@@ -79,14 +79,14 @@ class ApiRepositoryImpl(private val api: Api, context: Context) : ApiRepository 
         return tokensBody.toTokens()
     }
 
-    override suspend fun updateUser(userShort: UserShort): Avatars {
+    override suspend fun editUser(userShort: UserShort): Avatars? {
         val userShortBody = userShort.toUserShortBody()
-        val avatarsObjectBody = api.updateUser(userShortBody = userShortBody)
+        val avatarsObjectBody = api.editUser(userShortBody = userShortBody)
         val avatarsBody = avatarsObjectBody.avatarsBody
 
-        Log.d(TAG, "updateUser: avatarsBody = $avatarsBody")
+        Log.d(TAG, "editUser: avatarsBody = $avatarsBody")
 
-        return avatarsBody.toAvatars()
+        return avatarsBody?.toAvatars()
     }
 
     private companion object {

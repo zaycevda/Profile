@@ -1,17 +1,19 @@
 <resources>
     <!-- Dynamic text -->
-    <string name="birthday">birthday: %s</string>
-    <string name="city">city: %s</string>
+    <string name="set_birthday">birthday: %s</string>
+    <string name="set_city">city: %s</string>
     <string name="country_code">%s (%s)</string>
     <string name="code">flag %s</string>
     <string name="phone">phone: %s</string>
-    <string name="status">status: %s</string>
+    <string name="set_status">status: %s</string>
     <string name="username">username: %s</string>
     <string name="zodiac_sign">zodiac sign: %s</string>
 
     <!-- Static text -->
     <string name="app_name">TestForMangoFZCO</string>
     <string name="authorization">Authorization</string>
+    <string name="birthday">birthday:</string>
+    <string name="city">city:</string>
     <string name="default_country_code">🇷🇺 +7</string>
     <string name="edit_user_profile">Edit User Profile</string>
     <string name="enter_your_name">enter your name</string>
@@ -21,6 +23,7 @@
     <string name="registration">Registration</string>
     <string name="search">Search…</string>
     <string name="sign_up">Sign up</string>
+    <string name="status">status:</string>
     <string name="user_profile">User Profile</string>
 
     <!-- Toast messages -->

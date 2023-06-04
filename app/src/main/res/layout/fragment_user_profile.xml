@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="4dp"
-                android:text="@string/city"
+                android:text="@string/set_city"
                 android:textSize="16sp" />
 
             <TextView
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="4dp"
-                android:text="@string/birthday"
+                android:text="@string/set_birthday"
                 android:textSize="16sp" />
 
             <TextView
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="4dp"
-                android:text="@string/status"
+                android:text="@string/set_status"
                 android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>

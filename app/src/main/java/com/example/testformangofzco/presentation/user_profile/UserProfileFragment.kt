@@ -15,6 +15,11 @@ import com.example.domain.models.User
 import com.example.testformangofzco.App
 import com.example.testformangofzco.R
 import com.example.testformangofzco.databinding.FragmentUserProfileBinding
+import com.example.testformangofzco.presentation.user_profile.EditUserProfileFragment.Companion.AVATAR_KEY
+import com.example.testformangofzco.presentation.user_profile.EditUserProfileFragment.Companion.BIRTHDAY_KEY
+import com.example.testformangofzco.presentation.user_profile.EditUserProfileFragment.Companion.CITY_KEY
+import com.example.testformangofzco.presentation.user_profile.EditUserProfileFragment.Companion.STATUS_KEY
+import com.example.testformangofzco.presentation.user_profile.EditUserProfileFragment.Companion.USERNAME_KEY
 import com.example.testformangofzco.utils.safelyNavigate
 import com.example.testformangofzco.utils.setZodiacSign
 import com.example.testformangofzco.utils.showToast
@@ -66,24 +71,25 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                     success = { user ->
                         this@UserProfileFragment.user = user
                         binding.apply {
-                            user.avatar?.let {
-                                Glide.with(requireContext()).load(it).into(ivAvatar)
+                            user.avatars?.avatar?.let {
+                                Log.d(TAG, "initUser: $BASE_URL$it")
+                                Glide.with(requireContext())
+                                    .load("$BASE_URL$it")
+                                    .into(binding.ivAvatar)
                             }
                             tvPhone.text = getString(R.string.phone, user.phone)
                             tvUsername.text = getString(R.string.username, user.username)
-                            tvCity.text = getString(R.string.city, user.city ?: BLANK)
-                            tvBirthday.text = getString(R.string.birthday, user.birthday ?: BLANK)
-                            if (user.birthday == null) tvZodiacSign.text = getString(R.string.zodiac_sign, BLANK)
-                            else {
-                                Log.d(TAG, "initUser: user.birthday = ${user.birthday}")
-                                Log.d(TAG, "initUser: month = ${user.birthday!!.substring(3..4)}")
-                                Log.d(TAG, "initUser: dayOfMonth = ${user.birthday!!.substring(0..2).toInt()}")
+                            tvCity.text = getString(R.string.set_city, user.city)
+                            tvBirthday.text =
+                                getString(R.string.set_birthday, user.birthday)
+                            if (user.birthday.isNullOrBlank())
+                                tvZodiacSign.text = getString(R.string.zodiac_sign)
+                            else
                                 tvZodiacSign.setZodiacSign(
-                                    month = user.birthday!!.substring(3..4),
-                                    dayOfMonth = user.birthday!!.substring(0..2).toInt()
+                                    month = user.birthday!!.substring(FIFTH..SIXTH),
+                                    dayOfMonth = user.birthday!!.substring(EIGHTH..NINTH).toInt()
                                 )
-                            }
-                            tvStatus.text = getString(R.string.status, user.status ?: BLANK)
+                            tvStatus.text = getString(R.string.set_status, user.status)
                         }
                         binding.pbUserProfile.isGone = true
                         binding.svUserProfile.isGone = false
@@ -98,17 +104,22 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
             findNavController().safelyNavigate(
                 R.id.action_userProfileFragment_to_editUserProfileFragment,
                 bundleOf(
-                    EditUserProfileFragment.AVATAR_KEY to user.avatar,
-                    EditUserProfileFragment.CITY_KEY to user.city,
-                    EditUserProfileFragment.BIRTHDAY_KEY to user.birthday,
-                    EditUserProfileFragment.STATUS_KEY to user.status
+                    USERNAME_KEY to user.username,
+                    AVATAR_KEY to "$BASE_URL${user.avatars?.avatar}",
+                    CITY_KEY to user.city,
+                    BIRTHDAY_KEY to user.birthday,
+                    STATUS_KEY to user.status
                 )
             )
         }
     }
 
     private companion object {
+        private const val BASE_URL = "https://plannerok.ru/"
         private const val TAG = "UserProfileFragment"
-        private const val BLANK = ""
+        private const val FIFTH = 5
+        private const val SIXTH = 6
+        private const val EIGHTH = 8
+        private const val NINTH = 9
     }
 }

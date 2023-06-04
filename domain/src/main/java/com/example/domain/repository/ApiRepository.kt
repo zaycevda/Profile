@@ -21,5 +21,5 @@ interface ApiRepository {
 
     suspend fun registration(userMini: UserMini): Tokens
 
-    suspend fun updateUser(userShort: UserShort): Avatars
+    suspend fun editUser(userShort: UserShort): Avatars?
 }

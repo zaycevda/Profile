@@ -37,17 +37,17 @@ interface Api {
     @POST(API_REGISTER)
     suspend fun registration(@Body userMiniBody: UserMiniBody): TokensBody
 
-    @PUT(API_UPDATE_USER)
-    suspend fun updateUser(@Body userShortBody: UserShortBody): AvatarsObjectBody
+    @PUT(API_EDIT_USER)
+    suspend fun editUser(@Body userShortBody: UserShortBody): AvatarsObjectBody
 
     private companion object {
-        private const val API_AUTH = "/api/v1/users/send-auth-code/"
-        private const val API_CHECK_AUTH = "/api/v1/users/check-auth-code/"
-        private const val API_GET_REFRESH_TOKEN = "/api/v1/users/refresh-token/"
-        private const val API_GET_TOKEN = "/api/v1/users/check-jwt/"
-        private const val API_GET_USER = "/api/v1/users/me/"
-        private const val API_REGISTER = "/api/v1/users/register/"
-        private const val API_UPDATE_USER = "/api/v1/users/me/"
+        private const val API_AUTH = "api/v1/users/send-auth-code/"
+        private const val API_CHECK_AUTH = "api/v1/users/check-auth-code/"
+        private const val API_GET_REFRESH_TOKEN = "api/v1/users/refresh-token/"
+        private const val API_GET_TOKEN = "api/v1/users/check-jwt/"
+        private const val API_GET_USER = "api/v1/users/me/"
+        private const val API_REGISTER = "api/v1/users/register/"
+        private const val API_EDIT_USER = "api/v1/users/me/"
         private const val CACHE_CONTROL = "Cache-Control: max-age="
         private const val CACHE_LIFESPAN = "600" // 10 minutes
     }
