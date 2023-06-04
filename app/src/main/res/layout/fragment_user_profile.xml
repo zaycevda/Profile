@@ -27,6 +27,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/tb_registration"
+                app:titleTextAppearance="@style/ToolbarTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_constraintTop_toTopOf="parent"
@@ -46,65 +47,163 @@
                 android:id="@+id/iv_avatar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_gravity="center"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/dummy_avatar"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 
-            <TextView
-                android:id="@+id/tv_phone"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:alpha="0.125"
+                android:background="@color/black" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="12dp"
-                android:text="@string/phone"
-                android:textSize="16sp" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_username"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="+79999999999" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/username"
-                android:textSize="16sp" />
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_city"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="simpleusername" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/set_city"
-                android:textSize="16sp" />
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_birthday"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/city"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="simple city" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/set_birthday"
-                android:textSize="16sp" />
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_zodiac_sign"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birthday"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="07-05-2004" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/zodiac_sign"
-                android:textSize="16sp" />
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_status"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zodiac_sign"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_zodiac_sign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="Taurus" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/set_status"
-                android:textSize="16sp" />
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="simple status" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

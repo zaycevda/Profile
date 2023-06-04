@@ -77,19 +77,16 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                                     .load("$BASE_URL$it")
                                     .into(binding.ivAvatar)
                             }
-                            tvPhone.text = getString(R.string.phone, user.phone)
-                            tvUsername.text = getString(R.string.username, user.username)
-                            tvCity.text = getString(R.string.set_city, user.city)
-                            tvBirthday.text =
-                                getString(R.string.set_birthday, user.birthday)
-                            if (user.birthday.isNullOrBlank())
-                                tvZodiacSign.text = getString(R.string.zodiac_sign)
-                            else
+                            tvPhone.text = user.phone
+                            tvUsername.text = user.username
+                            tvCity.text = user.city
+                            tvBirthday.text = user.birthday
+                            if (!user.birthday.isNullOrBlank())
                                 tvZodiacSign.setZodiacSign(
                                     month = user.birthday!!.substring(FIFTH..SIXTH),
                                     dayOfMonth = user.birthday!!.substring(EIGHTH..NINTH).toInt()
                                 )
-                            tvStatus.text = getString(R.string.set_status, user.status)
+                            tvStatus.text = user.status
                         }
                         binding.pbUserProfile.isGone = true
                         binding.svUserProfile.isGone = false

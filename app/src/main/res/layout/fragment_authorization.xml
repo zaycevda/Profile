@@ -25,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/authorization" />
+            app:title="@string/authorization"
+            app:titleTextAppearance="@style/ToolbarTextStyle" />
 
         <RelativeLayout
             android:id="@+id/rl_phone"
@@ -52,6 +53,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginStart="-1dp"
                 android:layout_toEndOf="@id/tv_country_code"
                 app:hintAnimationEnabled="false"
                 app:hintEnabled="false"
@@ -76,6 +78,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
+            android:background="@drawable/shape_button"
+            android:backgroundTint="@color/gray"
             android:text="@string/log_in" />
 
         <EditText

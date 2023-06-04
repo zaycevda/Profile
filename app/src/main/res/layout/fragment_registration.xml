@@ -25,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/registration" />
+            app:title="@string/registration"
+            app:titleTextAppearance="@style/ToolbarTextStyle" />
 
         <TextView
             android:id="@+id/tv_phone_number"
@@ -34,28 +35,57 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:textSize="20sp"
-            tools:text="+7 977-899-63-34" />
+            tools:text="+7 999-999-99-99" />
 
-        <EditText
-            android:id="@+id/et_name"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
-            android:maxLength="128"
-            android:hint="@string/enter_your_name"
-            android:paddingHorizontal="12dp" />
+            app:hintAnimationEnabled="false"
+            app:startIconTint="@color/black">
 
-        <EditText
-            android:id="@+id/et_username"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_text_input"
+                android:hint="@string/enter_your_name"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="128"
+                android:maxLines="1"
+                android:paddingHorizontal="8dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
-            android:hint="@string/enter_your_username"
-            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
-            android:maxLength="32"
-            android:paddingHorizontal="12dp" />
+            app:hintAnimationEnabled="false"
+            app:startIconTint="@color/black">
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_text_input"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
+                android:hint="@string/enter_your_username"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="128"
+                android:paddingHorizontal="8dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sign_up"
@@ -63,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
+            android:background="@drawable/shape_button"
             android:text="@string/sign_up" />
-
     </LinearLayout>
 </FrameLayout>

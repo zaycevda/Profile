@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.util.Base64
-import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
