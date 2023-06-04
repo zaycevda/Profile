@@ -30,7 +30,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="@string/user_profile" />
+                app:title="@string/user_profile">
+
+                <ImageView
+                    android:id="@+id/iv_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_edit" />
+
+            </androidx.appcompat.widget.Toolbar>
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_avatar"
@@ -88,12 +98,12 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tv_about"
+                android:id="@+id/tv_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="4dp"
-                android:text="@string/about"
+                android:text="@string/status"
                 android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>

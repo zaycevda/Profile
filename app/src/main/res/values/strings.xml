@@ -1,8 +1,19 @@
 <resources>
+    <!-- Dynamic text -->
+    <string name="birthday">birthday: %s</string>
+    <string name="city">city: %s</string>
+    <string name="country_code">%s (%s)</string>
+    <string name="code">flag %s</string>
+    <string name="phone">phone: %s</string>
+    <string name="status">status %s</string>
+    <string name="username">username: %s</string>
+    <string name="zodiac_sign">zodiac sign: %s</string>
+
     <!-- Static text -->
     <string name="app_name">TestForMangoFZCO</string>
     <string name="authorization">Authorization</string>
     <string name="default_country_code">🇷🇺 +7</string>
+    <string name="edit_user_profile">Edit User Profile</string>
     <string name="enter_your_name">enter your name</string>
     <string name="enter_your_username">enter your username</string>
     <string name="log_in">Log in</string>
@@ -12,18 +23,22 @@
     <string name="sign_up">Sign up</string>
     <string name="user_profile">User Profile</string>
 
-    <!-- Dynamic text -->
-    <string name="country_code">%s (%s)</string>
-    <string name="code">flag %s</string>
-    <string name="phone">phone: %s</string>
-    <string name="username">username: %s</string>
-    <string name="city">city: %s</string>
-    <string name="birthday">birthday: %s</string>
-    <string name="zodiac_sign">zodiac sign: %s</string>
-    <string name="about">about %s</string>
-
     <!-- Toast messages -->
     <string name="error">error: %s</string>
     <string name="incorrect_phone">phone number is incorrect</string>
     <string name="username_min_length">username min length is 5 symbols</string>
+
+    <!-- Zodiac signs -->
+    <string name="aquarius">Aquarius</string>
+    <string name="pisces">Pisces</string>
+    <string name="aries">Aries</string>
+    <string name="taurus">Taurus</string>
+    <string name="gemini">Gemini</string>
+    <string name="cancer">Cancer</string>
+    <string name="leo">Leo</string>
+    <string name="virgo">Virgo</string>
+    <string name="libra">Libra</string>
+    <string name="scorpio">Scorpio</string>
+    <string name="sagittarius">Sagittarius</string>
+    <string name="capricorn">Capricorn</string>
 </resources>
