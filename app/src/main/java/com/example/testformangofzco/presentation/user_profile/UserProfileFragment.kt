@@ -73,13 +73,14 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                             tvUsername.text = getString(R.string.username, user.username)
                             tvCity.text = getString(R.string.city, user.city ?: BLANK)
                             tvBirthday.text = getString(R.string.birthday, user.birthday ?: BLANK)
-                            user.birthday?.let {
+                            if (user.birthday == null) tvZodiacSign.text = getString(R.string.zodiac_sign, BLANK)
+                            else {
                                 Log.d(TAG, "initUser: user.birthday = ${user.birthday}")
                                 Log.d(TAG, "initUser: month = ${user.birthday!!.substring(3..4)}")
                                 Log.d(TAG, "initUser: dayOfMonth = ${user.birthday!!.substring(0..2).toInt()}")
                                 tvZodiacSign.setZodiacSign(
-                                    month = it.substring(3..4),
-                                    dayOfMonth = it.substring(0..2).toInt()
+                                    month = user.birthday!!.substring(3..4),
+                                    dayOfMonth = user.birthday!!.substring(0..2).toInt()
                                 )
                             }
                             tvStatus.text = getString(R.string.status, user.status ?: BLANK)

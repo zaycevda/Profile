@@ -66,19 +66,22 @@ fun Activity.replaceActivity(activity: AppCompatActivity) {
 
 fun TextView.setZodiacSign(month: String, dayOfMonth: Int) {
     text = resources.getString(
-        when (month) {
-            JANUARY -> if (dayOfMonth >= 20) R.string.aquarius else R.string.capricorn
-            FEBRUARY -> if (dayOfMonth >= 19) R.string.pisces else R.string.aquarius
-            MARCH -> if (dayOfMonth >= 21) R.string.aries else R.string.pisces
-            APRIL -> if (dayOfMonth >= 20) R.string.taurus else R.string.aries
-            MAY -> if (dayOfMonth >= 21) R.string.gemini else R.string.taurus
-            JUNE -> if (dayOfMonth >= 21) R.string.cancer else R.string.gemini
-            JULY -> if (dayOfMonth >= 23) R.string.leo else R.string.cancer
-            AUGUST -> if (dayOfMonth >= 23) R.string.virgo else R.string.leo
-            SEPTEMBER -> if (dayOfMonth >= 23) R.string.libra else R.string.virgo
-            OCTOBER -> if (dayOfMonth >= 23) R.string.scorpio else R.string.libra
-            NOVEMBER -> if (dayOfMonth >= 22) R.string.sagittarius else R.string.scorpio
-            else -> if (dayOfMonth >= 22) R.string.capricorn else R.string.sagittarius
-        }
+        R.string.zodiac_sign,
+        resources.getString(
+            when (month) {
+                JANUARY -> if (dayOfMonth >= 20) R.string.aquarius else R.string.capricorn
+                FEBRUARY -> if (dayOfMonth >= 19) R.string.pisces else R.string.aquarius
+                MARCH -> if (dayOfMonth >= 21) R.string.aries else R.string.pisces
+                APRIL -> if (dayOfMonth >= 20) R.string.taurus else R.string.aries
+                MAY -> if (dayOfMonth >= 21) R.string.gemini else R.string.taurus
+                JUNE -> if (dayOfMonth >= 21) R.string.cancer else R.string.gemini
+                JULY -> if (dayOfMonth >= 23) R.string.leo else R.string.cancer
+                AUGUST -> if (dayOfMonth >= 23) R.string.virgo else R.string.leo
+                SEPTEMBER -> if (dayOfMonth >= 23) R.string.libra else R.string.virgo
+                OCTOBER -> if (dayOfMonth >= 23) R.string.scorpio else R.string.libra
+                NOVEMBER -> if (dayOfMonth >= 22) R.string.sagittarius else R.string.scorpio
+                else -> if (dayOfMonth >= 22) R.string.capricorn else R.string.sagittarius
+            }
+        )
     )
 }

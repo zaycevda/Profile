@@ -5,7 +5,7 @@
     <string name="country_code">%s (%s)</string>
     <string name="code">flag %s</string>
     <string name="phone">phone: %s</string>
-    <string name="status">status %s</string>
+    <string name="status">status: %s</string>
     <string name="username">username: %s</string>
     <string name="zodiac_sign">zodiac sign: %s</string>
 
